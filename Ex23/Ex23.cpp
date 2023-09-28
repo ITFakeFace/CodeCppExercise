@@ -1,3 +1,13 @@
+//Ex 23 (20 score):
+// Enter height of triangle
+// Draw triangle:
+// Example: N=5
+//           *                     *
+//         * * *                 *   *
+//       * * * * *      &      *       *
+//     * * * * * * *         *           *
+//   * * * * * * * * *     * * * * * * * * *
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -7,6 +17,12 @@
 #include <math.h>
 #include <string>
 
+/**
+ * @name: printSolidIsoscelesTriangle
+ * @param: N: length of edge.
+ * @briefly: print a solid isosceles triangle.
+ * @return: (none).
+ */
 void printSolidIsoscelesTriangle(int N) {
 	std::cout << std::endl << "Solid Isosceles Triangle:" << std::endl;
 	int width = N * 2 - 1;
@@ -23,6 +39,12 @@ void printSolidIsoscelesTriangle(int N) {
 	}
 }
 
+/**
+ * @name: printEmptyIsoscelesTriangle
+ * @param: N: length of edge.
+ * @briefly: print a empty isosceles triangle.
+ * @return: (none).
+ */
 void printEmptyIsoscelesTriangle(int N) {
 	std::cout << std::endl << "Empty Isosceles Triangle:" << std::endl;
 	int width = N * 2 - 1;
@@ -41,6 +63,7 @@ void printEmptyIsoscelesTriangle(int N) {
 
 int main()
 {
+	//N: height of triangle
 	int N = 0;
 	std::cout << "Enter Height to print: ";
 	std::cin >> N;

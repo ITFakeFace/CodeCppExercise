@@ -1,3 +1,7 @@
+//Ex 28 (30 score):
+// Read integers from 1 file
+// Write all prime numbers of input file's numbers to output file (another file)
+
 #include <iostream>
 #include <fstream>
 #include <time.h>
@@ -7,13 +11,13 @@
 #include <iomanip>
 
 /**
- * @name: checkElementalNumber
+ * @name: checkPrimeNumber
  * @param x: number to check
- * @briefly: Check parameter number is an elemental number or not.
- * @return true if parameter is elemental number
- *         false if parameter is not elemental number
+ * @briefly: Check parameter number is an prime number or not.
+ * @return true if parameter is prime number
+ *         false if parameter is not prime number
  */
-bool checkElementalNumber(int x) {
+bool checkPrimeNumber(int x) {
 	if (x > 2) {
 		for (int i = 2; i <= sqrt(x); i++) {
 			if (x % i == 0) {
@@ -32,6 +36,10 @@ bool checkElementalNumber(int x) {
 
 int main()
 {
+	//create link to file
+	// *** Important: before run this program,
+	//  please create a file name as "Ex28_Inp.txt" and input necessary data (integers)
+	//  please create a file name as "Ex28_Out.txt"
 	std::ifstream inputFile("Ex28_Inp.txt");
 	std::ofstream outputFile("Ex28_Out.txt");
 
@@ -45,13 +53,16 @@ int main()
 		return -1;
 	}
 
+	//num: temporary number reads from file
 	int num;
+	//read number from file until end of file (over of numbers)
 	while (inputFile >> num) {
-		if (checkElementalNumber(num)) {
+		if (checkPrimeNumber(num)) {
 			outputFile << num << " ";
 		}
 	}
 
+	//close file()
 	inputFile.close();
 	outputFile.close();
 

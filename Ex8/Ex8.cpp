@@ -1,3 +1,10 @@
+//Ex 8 (30 score):
+// Enter number of arrays, N number of elements of an array.
+// Generate randomize array of N elements (real number, 1 precision) 
+// And calculate sum of it.
+// Ouput array & sum (2 precision)
+// Output Max sum of all arrays.
+
 #include <iostream>
 #include <iomanip>
 #include <limits>
@@ -11,18 +18,18 @@
  * @return: Sum of generated array
  */
 float calcSumOfGeneratingArray(int N) {
-    float sum=0, recent = 0;
-    //setting range of randomize
-    int min_number = 0, max_number = 100, pointDecimal = 1;
-    for (int i = 0; i < N; i++) {
-        //Recipe: (rand() % (max_number + 1 - minimum_number) + minimum_number)/10^pointDecimal
-        recent = (rand() % (max_number + 1 - min_number) + min_number) / pow(10, pointDecimal);
-        //print recent value
-        std::cout << recent << " ";
-        sum += recent;
-    }
-    std::cout << " = " << std::fixed << std::setprecision(2) << sum << std::endl;
-    return sum;
+	float sum = 0, recent = 0;
+	//setting range of randomize
+	int min_number = 0, max_number = 100, pointDecimal = 1;
+	for (int i = 0; i < N; i++) {
+		//Recipe: (rand() % (max_number + 1 - minimum_number) + minimum_number)/10^pointDecimal
+		recent = (rand() % (max_number + 1 - min_number) + min_number) / pow(10, pointDecimal);
+		//print recent value
+		std::cout << recent << " ";
+		sum += recent;
+	}
+	std::cout << " = " << std::fixed << std::setprecision(2) << sum << std::endl;
+	return sum;
 }
 
 /**
@@ -32,50 +39,52 @@ float calcSumOfGeneratingArray(int N) {
  * @return: Largest Sum of generated arrays
  */
 float calcSumMax(int N, int times) {
-    std::cout << "Times A"<< ": ";
-    float sumMax = calcSumOfGeneratingArray(N);
-    float recentSum;
-    for (int i = 1; i < times; i++) {
-        std::cout << "Times " << (char)('A' + i) << ": ";
-        recentSum = calcSumOfGeneratingArray(N);
-        if (recentSum > sumMax) {
-            sumMax = recentSum;
-        }
-    }
-    return sumMax;
+	std::cout << "Times A" << ": ";
+	float sumMax = calcSumOfGeneratingArray(N);
+	float recentSum;
+	for (int i = 1; i < times; i++) {
+		std::cout << "Times " << (char)('A' + i) << ": ";
+		recentSum = calcSumOfGeneratingArray(N);
+		if (recentSum > sumMax) {
+			sumMax = recentSum;
+		}
+	}
+	return sumMax;
 }
 
 int main()
 {
-    //N: Number of array of random value from 0 to 50
-    //recent: Random number in recent.
-    //sumRecent: Summerize of all randomized number.
-    //maxSum
-    int N = 0, times = 0;
-    float recent = 0, sumRecent = 0, maxSum = 0;;
-    std::cout << "Enter Number to generate: ";
-    std::cin >> N;
-    //check invalid input
-    while (std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "#Warn: Invalid input !! Please Re-enter: ";
-        std::cin >> N;
-    }
-    
-    std::cout << "Enter Times to generate: ";
-    std::cin >> times;
-    //check invalid input
-    while (std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "#Warn: Invalid input !! Please Re-enter: ";
-        std::cin >> N;
-    }
+	//N: Number of array of random value from 0 to 50
+	//recent: Random number in recent.
+	//sumRecent: Summerize of all randomized number.
+	//maxSum: Largest sum of all number arrays.
+	//times: Number of arrays to generate.
+	int N = 0, times = 0;
+	float recent = 0, sumRecent = 0, maxSum = 0;;
+	std::cout << "Enter Number to generate: ";
+	std::cin >> N;
+	//check invalid input
+	while (std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << "#Warn: Invalid input !! Please Re-enter: ";
+		std::cin >> N;
+	}
 
-    //generate seed
-    srand((int)time(0));
-    
-    maxSum = calcSumMax(N, times);
-    std::cout << "Largest Sum is " << maxSum;
+	std::cout << "Enter Times to generate: ";
+	std::cin >> times;
+	//check invalid input
+	while (std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << "#Warn: Invalid input !! Please Re-enter: ";
+		std::cin >> N;
+	}
+
+	//generate seed
+	srand((int)time(0));
+
+	//Processing result
+	maxSum = calcSumMax(N, times);
+	std::cout << "Largest Sum is " << maxSum;
 }
