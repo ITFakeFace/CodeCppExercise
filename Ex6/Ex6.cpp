@@ -9,6 +9,7 @@
 #include <random>
 #include <time.h>
 
+
 int main()
 {
 	//N: Number of array of random value from 0 to 50

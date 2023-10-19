@@ -56,7 +56,7 @@ int main()
 	//check invalid input
 	while (std::cin.fail()) {
 		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin.ignore();
 		std::cout << "#Warn: Invalid input !! Please Re-enter: ";
 		std::cin >> N;
 	}
